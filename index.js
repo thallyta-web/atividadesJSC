@@ -2,25 +2,24 @@ const express = require('express');
 const app = express()
 const port = 3000
 
+//app.use(express.json());
+
 app.get('/', (req, res) => {
-  res.send('Home')
-})
-
-app.get('/sobre', (req, res) => {
-  res.send('Sobre')
-})
-
-app.post('/', (req, res) => {
-  res.send(`Enviando o método POST, para inserir dados.`)
+    app.send('Início')
 });
 
 app.put('/', (req, res) => {
-  res.send(`Enviando o método PUT, para atualizar dados.`)
+    app.send('Atualizando dados')
 })
 
-app.delete('/', (req, res) => {
-  res.send(`Enviando o método DELETE, para excluir dados`)
-})
+const usuarios = [{
+    nome: 'Thallyta',
+    idade: 18
+}];
+
+app.get('/usuarios', (req, res) => {
+    res.json(usuarios);
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
